@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   GLOBAL RESET & BASE
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  color: #3D3535;
+  background-color: #FAF7F2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   SCROLLBAR CUSTOMIZADA — 6px, cor primary
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F0EBE1;
+}
+::-webkit-scrollbar-thumb {
+  background: #5C1A2E;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7A2340;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5C1A2E #F0EBE1;
+}
+
+/* ============================================
+   TIPOGRAFIA BASE
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ============================================
+   FOTO DO CLIENTE
+   ============================================ */
+.client-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 8px 40px rgba(92, 26, 46, 0.12);
+}
+
+/* ============================================
+   VIDEO PLACEHOLDER — Proporção 9:16 vertical
+   ============================================ */
+#video-placeholder {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  background: linear-gradient(135deg, #1A2940 0%, #0d1a2e 100%);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#video-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: rgba(181, 133, 74, 0.15);
+  border: 2px solid rgba(181, 133, 74, 0.4);
+  border-radius: 50%;
+}
+
+/* ============================================
+   AOS — Override easing customizado
+   ============================================ */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* ============================================
+   FAQ ACCORDION — Transição suave
+   ============================================ */
+.faq-answer {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+.faq-answer.closed {
+  max-height: 0;
+  opacity: 0;
+}
+.faq-answer.open {
+  max-height: 800px;
+  opacity: 1;
+}
+
+/* ============================================
+   DEPOIMENTOS MOBILE — Scroll snap
+   ============================================ */
+.testimonials-track {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.testimonial-card-snap {
+  scroll-snap-align: center;
+}
