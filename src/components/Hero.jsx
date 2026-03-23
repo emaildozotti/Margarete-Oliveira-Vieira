@@ -32,7 +32,7 @@ function Hero() {
         <span style={{ fontFamily: 'var(--font-display, serif)', color: 'var(--color-accent, #8B7CE8)', fontSize: '1.1rem', fontStyle: 'italic' }}>
           Margarete Vieira
         </span>
-        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-shimmer" style={{ fontSize: '0.8rem' }}>
+        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{display:"inline-block",background:"#5C1A2E",color:"#FAF7F2",fontFamily:"Inter,system-ui,sans-serif",fontWeight:600,fontSize:"14px",letterSpacing:"0.08em",textTransform:"uppercase",padding:"16px 36px",borderRadius:"9999px",textDecoration:"none",cursor:"pointer",boxShadow:"0 12px 32px rgba(92,26,46,0.25)",transition:"all 0.3s ease"}} style={{ fontSize: '0.8rem' }}>
           Primeira conversa
         </a>
       </header>
@@ -89,7 +89,7 @@ function Hero() {
 
             {/* CTA */}
             <div style={{ opacity: 0, animation: 'fadeUp 0.8s ease forwards', animationDelay: '0.45s' }}>
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-shimmer">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{display:"inline-block",background:"#5C1A2E",color:"#FAF7F2",fontFamily:"Inter,system-ui,sans-serif",fontWeight:600,fontSize:"14px",letterSpacing:"0.08em",textTransform:"uppercase",padding:"16px 36px",borderRadius:"9999px",textDecoration:"none",cursor:"pointer",boxShadow:"0 12px 32px rgba(92,26,46,0.25)",transition:"all 0.3s ease"}}>
                 Quero minha primeira conversa
               </a>
             </div>
