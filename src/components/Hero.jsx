@@ -1,89 +1,117 @@
-// DECISÃO CRIATIVA: Hero sem imagem de fundo — tipografia como elemento principal de impacto.
-// O ornamento blur no canto superior direito cria atmosfera de profundidade espiritual
-// sem decoração explícita. A cascata de delays (0/150/300/450ms) entrega cada elemento
-// como uma revelação progressiva — reforça o conceito de "descoberta" da identidade.
+const WA_LINK = 'https://wa.me/5500000000000?text=Ol%C3%A1%2C%20Margarete!%20Vim%20pelo%20seu%20site%20e%20quero%20minha%20primeira%20conversa.'
+
+const css = `
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 5%) scale(1.06); }
+  66% { transform: translate(-3%, 2%) scale(0.96); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-5%, -4%) scale(1.09); }
+  66% { transform: translate(4%, -2%) scale(0.94); }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, -5%) scale(1.07); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+`
 
 function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center bg-neutral-50 overflow-hidden px-6 py-20 md:px-16 lg:px-24"
-    >
-      {/* Ornamento blur — atmosfera primary */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary opacity-[0.07] blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/4"
-      />
-      {/* Ornamento blur secundário — canto inferior esquerdo */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-accent opacity-[0.06] blur-3xl pointer-events-none -translate-x-1/4 translate-y-1/4"
-      />
+    <>
+      <style>{css}</style>
 
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
-        {/* Hero photo */}
-        <div className="flex justify-center mb-10">
-          <img
-            src="/images/hero.jpg"
-            alt="Margarete Oliveira Vieira"
-            className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-lg"
-          />
-        </div>
+      {/* Desktop sticky header */}
+      <header className="mv-header" style={{ display: 'none' }}>
+        <style>{`@media(min-width:768px){.mv-header{display:flex!important;position:fixed;top:0;left:0;right:0;z-index:50;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(8,8,16,0.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(var(--color-primary-rgb,100,80,200),0.12)}}`}</style>
+        <span style={{ fontFamily: 'var(--font-display, serif)', color: 'var(--color-accent, #8B7CE8)', fontSize: '1.1rem', fontStyle: 'italic' }}>
+          Margarete Vieira
+        </span>
+        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-shimmer" style={{ fontSize: '0.8rem' }}>
+          Primeira conversa
+        </a>
+      </header>
 
-        {/* Call Out */}
-        <p
-          className="font-ui text-xs md:text-sm uppercase tracking-widest text-accent font-medium mb-6"
-          data-aos="fade-up"
-          data-aos-delay="0"
+      <section
+        id="hero"
+        aria-label="Hero Margarete Oliveira Vieira"
+        style={{
+          position: 'relative',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden',
+          background: 'linear-gradient(135deg, #080810 0%, #0D0D1E 50%, #060610 100%)',
+        }}
+      >
+        {/* Aurora blobs */}
+        <div aria-hidden="true" style={{ position: 'absolute', top: '-15%', left: '-10%', width: '55vw', height: '55vw', maxWidth: '600px', maxHeight: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(100,80,200,0.25) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', animation: 'aurora-1 16s ease-in-out infinite', opacity: 0.35 }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '-10%', right: '-8%', width: '45vw', height: '45vw', maxWidth: '500px', maxHeight: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,124,232,0.20) 0%, transparent 70%)', filter: 'blur(90px)', pointerEvents: 'none', animation: 'aurora-2 20s ease-in-out infinite', opacity: 0.3 }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '45%', right: '20%', width: '35vw', height: '35vw', maxWidth: '400px', maxHeight: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(80,60,180,0.18) 0%, transparent 70%)', filter: 'blur(70px)', pointerEvents: 'none', animation: 'aurora-3 14s ease-in-out infinite', opacity: 0.25 }} />
+
+        {/* Content */}
+        <div
+          className="mv-grid"
+          style={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: '72rem', margin: '0 auto', padding: '6rem 1.5rem 4rem', display: 'grid', gridTemplateColumns: '1fr', gap: '3rem', alignItems: 'center' }}
         >
-          RECONSTRUÇÃO DE IDENTIDADE
-        </p>
+          <style>{`@media(min-width:768px){.mv-grid{grid-template-columns:1fr 1fr!important;padding-top:5rem!important}.mv-photo{order:2}.mv-text{order:1}}`}</style>
 
-        {/* H1 */}
-        <h1
-          className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-6"
-          data-aos="fade-up"
-          data-aos-delay="150"
-        >
-          Nasceu livre.{' '}
-          <span className="text-primary">Está vivendo o roteiro dos outros.</span>
-        </h1>
-
-        {/* Subtítulo */}
-        <p
-          className="font-body text-lg md:text-xl text-neutral-700 max-w-2xl leading-relaxed mb-10"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          Terapia que encontra a causa raiz e devolve o governo da sua vida.
-        </p>
-
-        {/* CTA scroll */}
-        <div data-aos="fade-up" data-aos-delay="450">
-          <a
-            href="#metodo"
-            className="inline-flex items-center gap-3 font-ui text-sm font-semibold uppercase tracking-wider text-neutral-50 bg-primary px-10 py-4 rounded-full shadow-cta hover:shadow-cta hover:bg-opacity-90 transition-all duration-300 hover:-translate-y-0.5"
-          >
-            Quero minha primeira conversa
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="animate-bounce"
-              aria-hidden="true"
+          {/* Text column */}
+          <div className="mv-text" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Callout */}
+            <p
+              style={{ fontFamily: 'var(--font-ui, sans-serif)', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent, #8B7CE8)', margin: 0, opacity: 0, animation: 'fadeUp 0.8s ease forwards', animationDelay: '0s' }}
             >
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </a>
+              RECONSTRUÇÃO DE IDENTIDADE
+            </p>
+
+            {/* H1 — excellent copy, preserved */}
+            <h1
+              style={{ fontFamily: 'var(--font-display, serif)', fontSize: 'clamp(2.2rem, 5vw, 4rem)', lineHeight: 1.1, color: '#F5F3FF', margin: 0, opacity: 0, animation: 'fadeUp 0.8s ease forwards', animationDelay: '0.15s' }}
+            >
+              Nasceu livre.{' '}
+              <span style={{ color: 'var(--color-accent, #8B7CE8)', display: 'block', marginTop: '0.2rem' }}>
+                Está vivendo o roteiro dos outros.
+              </span>
+            </h1>
+
+            {/* Sub-headline */}
+            <p
+              style={{ fontFamily: 'var(--font-body, sans-serif)', fontSize: 'clamp(1rem, 1.6vw, 1.15rem)', lineHeight: 1.65, color: 'rgba(245,243,255,0.70)', maxWidth: '30rem', margin: 0, opacity: 0, animation: 'fadeUp 0.8s ease forwards', animationDelay: '0.30s' }}
+            >
+              Terapia que encontra a causa raiz e devolve o governo da sua vida.
+            </p>
+
+            {/* CTA */}
+            <div style={{ opacity: 0, animation: 'fadeUp 0.8s ease forwards', animationDelay: '0.45s' }}>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-shimmer">
+                Quero minha primeira conversa
+              </a>
+            </div>
+          </div>
+
+          {/* Photo — Treatment A: rotated frame */}
+          <div className="mv-photo" style={{ display: 'flex', justifyContent: 'center', opacity: 0, animation: 'fadeUp 1s ease forwards', animationDelay: '0.2s' }}>
+            <div style={{ position: 'relative', width: '100%', maxWidth: '380px' }}>
+              {/* Rotated back frame */}
+              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, transform: 'rotate(-2.5deg)', background: 'rgba(100,80,200,0.10)', border: '1px solid rgba(139,124,232,0.3)', borderRadius: '4px', translate: '10px 10px' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #080810 0%, transparent 45%)', zIndex: 1, pointerEvents: 'none', borderRadius: '4px' }} aria-hidden="true" />
+              <img
+                src="/images/hero.jpg"
+                alt="Margarete Oliveira Vieira — Reconstrução de Identidade"
+                style={{ position: 'relative', width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: 'top', borderRadius: '4px', display: 'block', boxShadow: '0 25px 60px rgba(0,0,0,0.7)' }}
+                loading="eager"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
