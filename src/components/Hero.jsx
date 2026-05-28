@@ -64,7 +64,7 @@ function Hero() {
         {/* Content grid */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-24 pb-16 md:pt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text column */}
-          <div className="flex flex-col gap-6 md:order-1 order-2">
+          <div className="flex flex-col gap-6 md:order-1">
             {/* Callout */}
             <p
               className="font-ui text-[10px] tracking-[0.2em] uppercase text-accent-soft opacity-0"
@@ -121,7 +121,7 @@ function Hero() {
 
           {/* Photo column */}
           <div
-            className="flex justify-center md:order-2 order-1 opacity-0"
+            className="flex justify-center md:order-2 opacity-0"
             style={{ animation: 'fadeUp 1s ease forwards', animationDelay: '0.2s' }}
           >
             <div className="relative w-full max-w-[380px]">
