@@ -5,6 +5,13 @@
 // de depoimentos e mantém cada história completa e legível.
 // Separação visual clara entre "situação anterior" (italic, menor) e "resultado" (bold)
 // reforça a estrutura Chaperon sem precisar de labels explícitos.
+// Depoimentos em vídeo (Shorts 9:16) abrem a seção: peso máximo de prova social
+// vem do rosto/voz real; cards de texto fecham com variedade de histórias.
+
+const videoTestimonials = [
+  { id: 'TOIzdLWU-mQ', title: 'Depoimento de paciente — Margarete Oliveira' },
+  { id: 'MB09CXVTqIU', title: 'Depoimento de paciente — Margarete Oliveira' },
+]
 
 const testimonials = [
   {
@@ -55,6 +62,41 @@ function Testimonials() {
           </h2>
           <div className="w-16 h-px bg-accent mx-auto opacity-60 mt-2" />
         </div>
+
+        {/* Depoimentos em vídeo (Shorts 9:16) */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 max-w-2xl mx-auto mb-16"
+          data-aos="fade-up"
+        >
+          {videoTestimonials.map((v, index) => (
+            <div
+              key={v.id}
+              className="mx-auto w-full"
+              style={{ maxWidth: '300px' }}
+              data-aos="fade-up"
+              data-aos-delay={index * 120}
+            >
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-card"
+                style={{ aspectRatio: '9/16' }}
+              >
+                <iframe
+                  src={`https://www.youtube.com/embed/${v.id}`}
+                  title={v.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Separador entre vídeos e cards de texto */}
+        <div
+          aria-hidden="true"
+          className="w-24 h-px bg-accent opacity-30 mx-auto mb-16"
+        />
 
         {/* Mobile: scroll snap horizontal */}
         <div className="flex md:hidden gap-5 overflow-x-auto testimonials-track pb-4 -mx-6 px-6">
